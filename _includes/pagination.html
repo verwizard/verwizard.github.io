@@ -1,4 +1,5 @@
 <hr class="post-list__divider " />
+<<<<<<< HEAD
 
 <nav class="pagination" role="navigation">
     {% if paginator.previous_page %}
@@ -9,3 +10,41 @@
         <a class="older-posts pagination__older btn btn-small btn-tertiary" href="{{ paginator.next_page_path }}#blog">更早 &rarr;</a>
     {% endif %}
 </nav>
+=======
+<!-- 文章列表分隔线 -->
+<!-- Divider line between post lists -->
+
+<nav class="pagination" role="navigation">
+    <!-- 分页导航区域 -->
+    <!-- Pagination navigation section -->
+
+    {% if paginator.previous_page %}
+    <!-- 如果存在上一页（更新的文章页） -->
+    <!-- If there is a previous page (newer posts) -->
+        <a class="newer-posts pagination__newer btn btn-small btn-tertiary"
+           href="{{ paginator.previous_page_path }}#blog">
+           &larr; 最近
+        </a>
+        <!-- 跳转到更新的文章页 -->
+        <!-- Link to newer posts -->
+    {% endif %}
+
+    <span class="pagination__page-number">
+        {{ paginator.page }} / {{ paginator.total_pages }}
+    </span>
+    <!-- 当前页码 / 总页数 -->
+    <!-- Current page number / total pages -->
+
+    {% if paginator.next_page %}
+    <!-- 如果存在下一页（更早的文章页） -->
+    <!-- If there is a next page (older posts) -->
+        <a class="older-posts pagination__older btn btn-small btn-tertiary"
+           href="{{ paginator.next_page_path }}#blog">
+           更早 &rarr;
+        </a>
+        <!-- 跳转到更早的文章页 -->
+        <!-- Link to older posts -->
+    {% endif %}
+
+</nav>
+>>>>>>> 223d15c (简单完善网站)

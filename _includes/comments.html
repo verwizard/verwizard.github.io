@@ -1,4 +1,5 @@
 <section class="post-comments">
+<<<<<<< HEAD
   {% if site.comment.disqus %}
     <div id="disqus_thread"></div>
     <script>
@@ -36,3 +37,96 @@
   
   
 </section>
+=======
+  <!-- 评论区容器 -->
+
+  {% if site.comment.disqus %}
+  <!-- If Disqus is enabled -->
+  <!-- 如果配置了 Disqus 评论系统 -->
+
+    <div id="disqus_thread"></div>
+    <!-- Disqus 评论挂载节点 -->
+
+    <script>
+    
+    // Disqus 配置函数
+    // Configure Disqus page information
+    var disqus_config = function () {
+        // 当前页面完整 URL
+        // Current page full URL
+        this.page.url = "{{ page.url | prepend: site.baseurl | prepend: site.url }}";
+
+        // 当前页面唯一标识（用于区分不同文章）
+        // Unique identifier for the page
+        this.page.identifier = "{{ page.url }}";
+    };
+
+    // Disqus 站点 shortname（在 _config.yml 中配置）
+    // Disqus site shortname from config
+    var disqus_shortname = '{{ site.comment.disqus }}';
+    
+    // 加载 Disqus 评论脚本
+    // Load Disqus embed script
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        // 构建 Disqus 脚本地址
+        // Build Disqus script URL
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+        // 设置时间戳（避免缓存问题）
+        // Set timestamp to avoid caching
+        s.setAttribute('data-timestamp', +new Date());
+
+        // 将脚本插入页面
+        // Append script to document
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <!-- 当浏览器禁用 JS 时的提示 -->
+    <!-- Fallback message when JavaScript is disabled -->
+    <noscript>
+      要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript
+    </noscript>
+    
+  {% elsif site.comment.duoshuo %}
+  <!-- If Duoshuo (多说) is enabled -->
+  <!-- 如果配置了多说评论系统 -->
+
+    <div class="ds-thread"
+         data-thread-key="{{ page.url }}"
+         data-title="{{ page.title }}"
+         data-url="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
+    </div>
+    <!-- 多说评论容器，绑定页面信息 -->
+
+    <script type="text/javascript">
+
+        // 多说配置（short_name 在 _config.yml 中设置）
+        // Duoshuo configuration
+        var duoshuoQuery = {short_name:"{{ site.comment.duoshuo }}"};
+
+        // 动态加载多说脚本
+        // Dynamically load Duoshuo script
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+
+            // 根据当前协议选择 http 或 https
+            // Choose protocol dynamically
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+
+            ds.charset = 'UTF-8';
+
+            // 插入脚本到页面
+            // Append script to document
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+
+  {% endif %}
+  
+</section>
+>>>>>>> 223d15c (简单完善网站)

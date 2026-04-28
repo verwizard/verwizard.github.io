@@ -1,4 +1,5 @@
 <header class="panel-cover {% if page.layout == 'post' or page.layout == 'page' %}panel-cover--collapsed{% endif %}" style="background-image: url('/assets/images/background-cover.jpg')">
+<<<<<<< HEAD
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
@@ -12,10 +13,59 @@
         <hr class="panel-cover__divider" />
         <p class="panel-cover__description">{{ site.description }}</p>
         <hr class="panel-cover__divider panel-cover__divider--secondary" />
+=======
+  <!-- 顶部封面区域，根据页面类型（文章/页面）决定是否折叠 -->
+  <!-- Header cover section; collapsed for post/page layout -->
+
+  <div class="panel-main">
+    <!-- 主面板容器 -->
+    <!-- Main panel container -->
+
+    <div class="panel-main__inner panel-inverted">
+    <!-- 内部容器（反色样式） -->
+    <!-- Inner container with inverted style -->
+
+    <div class="panel-main__content">
+    <!-- 核心内容区域 -->
+    <!-- Main content area -->
+
+        <a href="/#blog" title="前往 {{ site.title }} 的主页" class="blog-button">
+          <img src="/assets/images/avatar.jpg" width="80" alt="{{ site.title }} logo" class="panel-cover__logo logo" />
+        </a>
+        <!-- 头像 + 首页跳转 -->
+        <!-- Avatar image linking to blog homepage -->
+
+        <h1 class="panel-cover__title panel-title">
+          <a href="/#blog" title="link to homepage for {{ site.title }}" class="blog-button">
+            {{ site.title }}
+          </a>
+        </h1>
+        <!-- 网站标题 -->
+        <!-- Site title -->
+
+        {% if site.subtitle %}
+        <span class="panel-cover__subtitle panel-subtitle">{{site.subtitle}}</span>
+        {% endif %}
+        <!-- 副标题（可选） -->
+        <!-- Subtitle (optional) -->
+
+        <hr class="panel-cover__divider" />
+        <!-- 分隔线 -->
+        <!-- Divider -->
+
+        <p class="panel-cover__description">{{ site.description }}</p>
+        <!-- 网站描述 -->
+        <!-- Site description -->
+
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <!-- 次级分隔线 -->
+        <!-- Secondary divider -->
+>>>>>>> 223d15c (简单完善网站)
         
         {% if site.welcome_message %}
         <p class="panel-cover__description">{{ site.welcome_message }}</p>
         {% endif %}
+<<<<<<< HEAD
         
         <div class="navigation-wrapper">
           <div>
@@ -24,12 +74,51 @@
                 <li class="navigation__item"><a href="/#blog" title="{{site.blog_button.description}}" class="blog-button">{{site.blog_button.title}}</a></li>
                 {% for item in site.nav %}
                   <li class="navigation__item"><a href="{{item.url}}" target="_blank" title="{{item.description}}">{{item.title}}</a></li>
+=======
+        <!-- 欢迎语（可选） -->
+        <!-- Welcome message (optional) -->
+        
+        <div class="navigation-wrapper">
+          <!-- 导航区域容器 -->
+          <!-- Navigation wrapper -->
+
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <!-- 主导航栏 -->
+              <!-- Primary navigation -->
+
+              <ul class="navigation">
+                <!-- 博客按钮 -->
+                <!-- Blog button -->
+                <li class="navigation__item">
+                  <a href="/#blog" title="{{site.blog_button.description}}" class="blog-button">
+                    {{site.blog_button.title}}
+                  </a>
+                </li>
+
+                <!-- 自定义导航项（来自 _config.yml 的 nav） -->
+                <!-- Custom navigation items from config -->
+                {% for item in site.nav %}
+                  <li class="navigation__item">
+                    <a href="{{item.url}}" target="_blank" title="{{item.description}}">
+                      {{item.title}}
+                    </a>
+                  </li>
+>>>>>>> 223d15c (简单完善网站)
                 {% endfor %}
               </ul>
             </nav>
           </div>
           
+<<<<<<< HEAD
           <div>{% include social.html %}</div>
+=======
+          <div>
+            {% include social.html %}
+          </div>
+          <!-- 社交链接区域（引用 social.html） -->
+          <!-- Social links section -->
+>>>>>>> 223d15c (简单完善网站)
         </div>
       </div>
     </div>
@@ -39,5 +128,12 @@
     {% else %}
     <div class="panel-cover--overlay cover-disabled"></div>
     {% endif %}
+<<<<<<< HEAD
   </div>
 </header>
+=======
+    <!-- 封面颜色叠加层，根据配置决定颜色或禁用 -->
+    <!-- Overlay layer with optional color -->
+  </div>
+</header>
+>>>>>>> 223d15c (简单完善网站)

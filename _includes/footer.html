@@ -1,7 +1,70 @@
 <section class="footer">
+<<<<<<< HEAD
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
         <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 {{ site.time | date: "%F" }} 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站{% if site.creator %}由 {{site.creator}} 创建，{% endif %}采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; {{site.time | date: "%Y"}}</span>
     </footer>
 </section>
+=======
+    <!-- 页脚整体区域 -->
+    <!-- Footer section -->
+
+    <footer>
+
+        <span class="footer__copyright">
+            <!-- 网站版权与许可协议说明 -->
+            <!-- Website license information -->
+            本站点采用
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议
+            </a>
+        </span>
+
+        <span class="footer__copyright">
+            <!-- 网站构建工具与生成时间说明 -->
+            <!-- Site build tool and generation time -->
+            由 
+            <a href="https://jekyllrb.com">Jekyll</a>
+            于 {{ site.time | date: "%F" }} 生成，
+            <!-- site.time 是 Jekyll 构建时间变量 -->
+            <!-- site.time is the build time variable -->
+
+            感谢 
+            <a href="https://www.digitalocean.com/?refcode=30ed2d146762">
+                Digital Ocean
+            </a>
+            为本站提供稳定的 VPS 服务
+            <!-- Hosting provider acknowledgment -->
+        </span>
+
+        <span class="footer__copyright">
+            <!-- 网站作者、主题来源与源码说明 -->
+            <!-- Site creator, theme and source code info -->
+
+            本站
+            {% if site.creator %}
+            由 {{site.creator}} 创建，
+            <!-- 如果 _config.yml 中设置了 creator，就显示 -->
+            <!-- Display creator if defined in config -->
+            {% endif %}
+
+            采用 
+            <a href="https://github.com/onevcat/vno-jekyll">
+                Vno - Jekyll
+            </a>
+            作为主题，
+
+            您可以在 GitHub 找到
+            <a href="https://github.com/onevcat/OneV-s-Den">
+                本站源码
+            </a>
+
+            <!-- 当前年份自动生成 -->
+            <!-- Auto-generated current year -->
+            - &copy; {{site.time | date: "%Y"}}
+        </span>
+
+    </footer>
+</section>
+>>>>>>> 223d15c (简单完善网站)

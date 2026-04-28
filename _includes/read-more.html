@@ -1,4 +1,5 @@
 <section class="read-more">
+<<<<<<< HEAD
    {% if page.next %}
    {% assign current = page.next %}
    <div class="read-more-item">
@@ -19,3 +20,122 @@
    </div>
    {% endif %}
 </section>
+=======
+    <!-- “继续阅读”推荐区域 -->
+    <!-- Read more section -->
+ 
+    {% if page.next %}
+    <!-- 如果存在下一篇文章（时间上更新的文章） -->
+    <!-- If there is a next (newer) post -->
+    {% assign current = page.next %}
+    <!-- 将下一篇文章赋值给 current 变量 -->
+    <!-- Assign next post to variable 'current' -->
+ 
+    <div class="read-more-item">
+        <!-- 单个推荐文章块 -->
+        <!-- Single recommended post item -->
+ 
+        <span class="read-more-item-dim">最近的文章</span>
+        <!-- 标签：最近的文章 -->
+        <!-- Label: Newer post -->
+ 
+        <h2 class="post-list__post-title post-title">
+            <a href="{{ current.url }}" title="link to {{ current.title }}">
+                {{ current.title }}
+            </a>
+        </h2>
+        <!-- 文章标题及跳转链接 -->
+        <!-- Post title and link -->
+ 
+        <p class="excerpt">
+            {{ current.content | markdownify | strip_html | strip_newlines | truncate: 250 }}&hellip;
+        </p>
+        <!-- 文章摘要（去除 HTML，截断为 250 字） -->
+        <!-- Post excerpt (strip HTML, truncate to 250 chars) -->
+ 
+        <div class="post-list__meta">
+            <!-- 文章元信息（时间 + 标签 + 阅读按钮） -->
+            <!-- Post metadata (date + tags + read more button) -->
+ 
+            <time datetime="{{current.date | date: date_to_xmlschema}}"
+                  class="post-list__meta--date date">
+                  {{current.date | date: "%F"}}
+            </time>
+            <!-- 发布时间 -->
+            <!-- Publish date -->
+ 
+            &#8226;
+ 
+            <span class="post-list__meta--tags tags">
+                {{current.tags | join:' '}}
+            </span>
+            <!-- 标签列表 -->
+            <!-- Tags list -->
+ 
+            <a class="btn-border-small" href={{current.url}}>
+                继续阅读
+            </a>
+            <!-- 阅读更多按钮 -->
+            <!-- Read more button -->
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if page.previous %}
+    <!-- 如果存在上一篇文章（时间上更早的文章） -->
+    <!-- If there is a previous (older) post -->
+    {% assign current = page.previous %}
+    <!-- 将上一篇文章赋值给 current -->
+    <!-- Assign previous post to variable 'current' -->
+ 
+    <div class="read-more-item">
+        <!-- 单个推荐文章块 -->
+        <!-- Single recommended post item -->
+ 
+        <span class="read-more-item-dim">更早的文章</span>
+        <!-- 标签：更早的文章 -->
+        <!-- Label: Older post -->
+ 
+        <h2 class="post-list__post-title post-title">
+            <a href="{{ current.url }}" title="link to {{ current.title }}">
+                {{ current.title }}
+            </a>
+        </h2>
+        <!-- 文章标题 -->
+        <!-- Post title -->
+ 
+        <p class="excerpt">
+            {{ current.content | markdownify | strip_html | strip_newlines | truncate: 250 }}&hellip;
+        </p>
+        <!-- 文章摘要 -->
+        <!-- Post excerpt -->
+ 
+        <div class="post-list__meta">
+            <!-- 文章元信息 -->
+            <!-- Post metadata -->
+ 
+            <time datetime="{{current.date | date: date_to_xmlschema}}"
+                  class="post-list__meta--date date">
+                  {{current.date | date: "%F"}}
+            </time>
+            <!-- 发布时间 -->
+            <!-- Publish date -->
+ 
+            &#8226;
+ 
+            <span class="post-list__meta--tags tags">
+                {{current.tags | join:' '}}
+            </span>
+            <!-- 标签 -->
+            <!-- Tags -->
+ 
+            <a class="btn-border-small" href={{current.url}}>
+                继续阅读
+            </a>
+            <!-- 阅读按钮 -->
+            <!-- Read more button -->
+        </div>
+    </div>
+    {% endif %}
+ </section>
+>>>>>>> 223d15c (简单完善网站)

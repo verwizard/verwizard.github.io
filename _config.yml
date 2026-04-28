@@ -1,49 +1,58 @@
 # Basic
-title: Vno Jekyll
-subtitle: A blog-orientation theme for Jekyll
-welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
-description: Vno Jekyll is a port of my Ghost theme vno.
-creator: <a href="http://onev.cat">@onevcat</a>
+# 基础信息
+title: overwizard_ma
+subtitle: 个人博客
+welcome_message: 欢迎来到 overwizard_ma 的博客
+description: 记录学习、技术、项目与思考
+creator: overwizard_ma
 
-url: "http://vno.onevcat.com"
+url: "https://verwizard.github.io"
 
 permalink: /:year/:month/:title/
 
 # Format
+# 格式设置
 highlighter: rouge
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: red
+# 支持的颜色：blue、green、purple、red、orange、slate。如果想要透明/无色，可留空。
+cover_color: slate
 
 # The blog button should not be removed.
+# 博客按钮不建议删除。
 blog_button:
     title: Blog
-    description: Visit blog
+    description: 阅读博客
 
 # Navigation buttons in the front page.
+# 首页导航按钮。
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
-    # - {title: Another Button, description: A button, url: 'http://example.com'}
+    - {title: About, description: 关于我, url: '/about/'}
+    # - {title: Projects, description: 我的项目, url: '/projects/'}
 
 # Pagination
+# 分页设置
 plugins: [jekyll-paginate]
 paginate: 10
 paginate_path: "page/:num/"
 
 # Comment
+# 评论设置
 comment:
-    disqus: vno-jekyll
+    disqus:
     # duoshuo: 
     
 # Social
+# 社交账号设置
 social:
-    weibo: onevcat
-    github: onevcat
-    twitter: onevcat
-    gplus: 107108267983477358170
-    mail: onev@onevcat.com
+    weibo: 
+    github: verwizard
+    csdn: overwizard
+    twitter:
+    e-mail: overwizard_ma@outlook.com
 
 # Google Analytics
+# 谷歌网站数据统计
 ga:
     # id: your_ga_id
     # host: your_host

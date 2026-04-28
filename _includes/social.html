@@ -3,6 +3,7 @@
 
   {% if site.social.weibo %}
   <!-- Weibo -->
+  <!-- 微博链接 -->
   <li class="navigation__item">
     <a href="http://weibo.com/{{site.social.weibo}}" title="@{{site.social.weibo}} 的微博" target="_blank">
       <i class='social fa fa-weibo'></i>
@@ -13,6 +14,7 @@
 
   {% if site.social.github %}
   <!-- Github -->
+  <!-- GitHub 主页链接 -->
   <li class="navigation__item">
     <a href="https://github.com/{{site.social.github}}" title="@{{site.social.github}} 的 Github" target="_blank">
       <i class='social fa fa-github'></i>
@@ -20,9 +22,21 @@
     </a>
   </li>
   {% endif %}
-  
+
+  {% if site.social.csdn %}
+  <!-- CSDN -->
+  <!-- CSDN 个人主页链接 -->
+  <li class="navigation__item">
+    <a href="https://blog.csdn.net/{{site.social.csdn}}" title="{{site.social.csdn}} 的 CSDN 博客" target="_blank">
+      <i class='social fa fa-code'></i>
+      <span class="label">CSDN</span>
+    </a>
+  </li>
+  {% endif %}
+
   {% if site.social.twitter %}
   <!-- Twitter -->
+  <!-- Twitter/X 主页链接 -->
   <li class="navigation__item">
     <a href="http://twitter.com/{{site.social.twitter}}" title="@{{site.social.twitter}}" target="_blank">
       <i class='social fa fa-twitter'></i>
@@ -31,26 +45,9 @@
   </li>
   {% endif %}
 
-  {% if site.social.gplus %}
-  <!-- Google Plus -->
-  <li class="navigation__item">
-    <a href="https://plus.google.com/{{site.social.gplus}}" rel="author" title="Google+" target="_blank">
-      <i class='social fa fa-google-plus-square'></i>
-      <span class="label">Google Plus</span>
-    </a>
-  </li>
-  {% endif %}
-
-  <!-- RSS -->
-  <li class="navigation__item">
-    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
-      <span class="label">RSS</span>
-    </a>
-  </li>
-
   {% if site.social.mail %}
   <!-- Email -->
+  <!-- 邮箱联系链接 -->
   <li class="navigation__item">
     <a href="mailto:{{site.social.mail}}" title="Contact me">
       <i class='social fa fa-envelope'></i>
@@ -58,6 +55,15 @@
     </a>
   </li>
   {% endif %}
+
+  <!-- RSS -->
+  <!-- RSS 订阅链接 -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
 
   </ul>
 </nav>
