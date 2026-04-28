@@ -77,22 +77,26 @@ Jekyll 需要 **Ruby** 运行环境，建议使用最新版本的 Ruby。
 
       若看到 Ruby 和 Gem 的版本号，则说明安装成功。
 
-     ![1](..\assets\images\posts\25-02-12-静态网站及其生成工具指南\image1.png)
+     ![1](..\assets\images\25_02_12_静态网站及其生成工具指南\image1.png)
 
 - **macOS**：
 
-  ```sh
-  # 1. 在 Mac 上，推荐使用 Homebrew 安装 Ruby：
-  brew install ruby
-  
-  # 2. 安装后，更新环境变量：
-  echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
-  source ~/.zshrc
-  
-  # 3. 验证安装：
-  ruby -v
-  gem -v
-  ```
+  1. 在 Mac 上，推荐使用 Homebrew 安装 Ruby：
+      ```sh
+      brew install ruby
+      ```
+
+  2. 安装后，更新环境变量：
+      ```sh
+      echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
+      source ~/.zshrc
+      ```
+
+  3. 验证安装：
+      ```sh
+      ruby -v
+      gem -v
+      ```
 
 - **Linux**：
 
@@ -119,19 +123,19 @@ Jekyll 需要 **Ruby** 运行环境，建议使用最新版本的 Ruby。
 
 - **安装 Bundler（Ruby 依赖管理器）**
 
-  ```sh
-  # 安装命令
-  gem install bundler
+  - **安装命令**
   
-  # 安装验证
-  bundler -v
-  ```
+    ```sh
+    # 安装命令
+    gem install bundler
 
-  ![2](..\assets\images\posts\25-02-12-静态网站及其生成工具指南\image2.png)
+    # 安装验证
+    bundler -v
+    ```
 
-  > [!NOTE]
-  >
-  > **注：** `gem install jekyll bundler` 这条命令用于全局安装 Jekyll 和 Bundler，它**不依赖于当前所在的目录**。这意味着你可以在任何目录下打开 **命令提示符（cmd）** 后执行该命令，只需满足以下条件： 
+  ![2](..\assets\images\25_02_12_静态网站及其生成工具指南\image2.png)
+
+  > **注：** `gem install jekyll bundler` 这条命令用于全局安装 Jekyll 和 Bundler，它 **不依赖于当前所在的目录** 。这意味着你可以在任何目录下打开 **命令提示符（cmd）** 后执行该命令，只需满足以下条件： 
   >
   > 1. **Ruby 已安装**：确保你已经在 Windows 系统上正确安装了 Ruby（推荐使用 [RubyInstaller](https://rubyinstaller.org/)）
   >
@@ -141,30 +145,35 @@ Jekyll 需要 **Ruby** 运行环境，建议使用最新版本的 Ruby。
 
 ### **📌 3. 创建 Jekyll 博客**
 
-   在`cmd`终端运行：
+- **在`cmd`终端运行：**
+  - 1.安装 Jekyll 和必要依赖：
+    ```sh
+    gem install jekyll bundler
+    ```
 
-   ```sh
-   # 1.安装 Jekyll 和必要依赖：
-   gem install jekyll bundler
+    2.初始化一个新的 Jekyll 项目：
+    ```sh
+    jekyll new my-blog
+    ```
 
-   # 2.初始化一个新的 Jekyll 项目：
-   jekyll new my-blog
+    3.进入博客目录并安装依赖：
+    ```sh
+    cd my-blog
+    bundle install
+    ```
 
-   # 3.进入博客目录并安装依赖：
-   cd my-blog
-   bundle install
+    4.启动本地服务器
+    ```sh
+    bundle exec jekyll serve
+    ```
 
-   # 4.启动本地服务器
-   bundle exec jekyll serve
+    5.打开浏览器访问 http://127.0.0.1:4000 预览博客  
 
-   # 5.打开浏览器访问 http://127.0.0.1:4000 预览博客
-   ```
+   ![3](..\assets\images\25_02_12_静态网站及其生成工具指南\image3.png)
 
-![3](..\assets\images\posts\25-02-12-静态网站及其生成工具指南\image3.png)
+   ![4](..\assets\images\25_02_12_静态网站及其生成工具指南\image4.png)
 
-![4](..\assets\images\posts\25-02-12-静态网站及其生成工具指南\image4.png)
-
-![5](..\assets\images\posts\25-02-12-静态网站及其生成工具指南\image5.png)
+   ![5](..\assets\images\25_02_12_静态网站及其生成工具指南\image5.png)
 
 ---
 
