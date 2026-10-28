@@ -1,12 +1,18 @@
+/* 亮色（默认） */
 :root {
+  color-scheme: light;
+
   --color-bg: #ffffff;
   --color-text: #1f2328;
   --color-muted: #6b7280;
   --color-border: #e8e8e8;
+  --color-border-strong: #d8d8dc;
   --color-accent: #bf1827;
   --color-accent-strong: #8f101d;
   --color-accent-soft: #fbf1f2;
   --color-code-bg: #f7f7f8;
+  --color-selection-bg: #fbf1f2;
+  --color-selection-text: #8f101d;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
@@ -26,4 +32,41 @@
 
   --radius-sm: 4px;
   --radius-md: 6px;
+}
+
+/* 暗色（手动切换） */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0d1117;
+  --color-text: #e6edf3;
+  --color-muted: #8b949e;
+  --color-border: #30363d;
+  --color-border-strong: #3d444d;
+  --color-accent: #ff7a85;
+  --color-accent-strong: #ffb3ba;
+  --color-accent-soft: #2a1418;
+  --color-code-bg: #161b22;
+  --color-selection-bg: #3a1a20;
+  --color-selection-text: #ffe0e3;
+}
+
+/* 暗色（无 JS 兜底：防闪脚本未执行时跟随系统）
+   :not([data-theme]) 不能省，否则用户手动选亮色会被媒体查询盖掉 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --color-bg: #0d1117;
+    --color-text: #e6edf3;
+    --color-muted: #8b949e;
+    --color-border: #30363d;
+    --color-border-strong: #3d444d;
+    --color-accent: #ff7a85;
+    --color-accent-strong: #ffb3ba;
+    --color-accent-soft: #2a1418;
+    --color-code-bg: #161b22;
+    --color-selection-bg: #3a1a20;
+    --color-selection-text: #ffe0e3;
+  }
 }

@@ -10,8 +10,9 @@
     "check": "astro check"
   },
   "dependencies": {
-    "astro": "^5.18.2",
-    "@astrojs/rss": "^4.0.19"
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.18.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

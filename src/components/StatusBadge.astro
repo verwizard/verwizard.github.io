@@ -1,12 +1,12 @@
 ---
-import { STATUS_LABEL } from '../consts';
+import { STATUS_LABEL, type ProjectStatus } from '../consts';
 
 interface Props {
-  status: string;
+  status: ProjectStatus;
 }
 
 const { status } = Astro.props;
-const label = STATUS_LABEL[status] ?? status;
+const label = STATUS_LABEL[status];
 ---
 
 <span class:list={['badge', { 'badge--active': status === 'active' }]}>

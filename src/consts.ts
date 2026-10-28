@@ -32,7 +32,9 @@ export const PROJECT_GROUPS = [
   { key: 'perception', title: '感知与视觉' },
 ] as const;
 
-export const STATUS_LABEL: Record<string, string> = {
+export type ProjectStatus = 'active' | 'done' | 'tool';
+
+export const STATUS_LABEL: Record<ProjectStatus, string> = {
   active: '进行中',
   done: '已完成',
   tool: '工具',

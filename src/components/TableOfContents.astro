@@ -1,0 +1,37 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+const clean = (text: string) =>
+  text
+    .replace(/[\p{Extended_Pictographic}\uFE0F]/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const items = headings
+  .filter((heading) => heading.depth === 2 || heading.depth === 3)
+  .map((heading) => ({ ...heading, label: clean(heading.text) }))
+  .filter((heading) => heading.label.length > 0);
+---
+
+{
+  items.length > 1 && (
+    <details class="toc">
+      <summary class="toc__summary">目录</summary>
+      <nav aria-label="文章目录">
+        <ol class="toc__list">
+          {items.map((heading) => (
+            <li class:list={['toc__item', `toc__item--h${heading.depth}`]}>
+              <a href={`#${heading.slug}`}>{heading.label}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </details>
+  )
+}

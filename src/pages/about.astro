@@ -10,11 +10,13 @@ import { SITE } from '../consts';
     <Image
       class="about-header__avatar"
       src={avatar}
-      alt={`${SITE.author} 的头像`}
+      alt=""
       width={72}
       height={72}
       format="webp"
       quality={85}
+      loading="eager"
+      fetchpriority="high"
     />
     <div>
       <h1 class="about-header__name">{SITE.author}</h1>
@@ -49,32 +51,35 @@ import { SITE } from '../consts';
 
     <h2>技术栈</h2>
 
-    <table>
+    <div class="table-wrap">
+      <table>
+      <caption class="visually-hidden">技术栈</caption>
       <thead>
         <tr>
-          <th>方向</th>
-          <th>用的东西</th>
+          <th scope="col">方向</th>
+          <th scope="col">用的东西</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>控制与仿真</td>
+          <th scope="row">控制与仿真</th>
           <td>MATLAB / Simulink、FOC、SVPWM、PID 整定、串级回路、Bode 与稳定裕度分析</td>
         </tr>
         <tr>
-          <td>系统辨识</td>
+          <th scope="row">系统辨识</th>
           <td>最小二乘、ARX</td>
         </tr>
         <tr>
-          <td>感知与视觉</td>
+          <th scope="row">感知与视觉</th>
           <td>Python、PyTorch、OpenCV、NumPy / SciPy / scikit-image</td>
         </tr>
         <tr>
-          <td>前端工具</td>
+          <th scope="row">前端工具</th>
           <td>原生 JavaScript + Canvas，静态实现、离线可运行</td>
         </tr>
       </tbody>
-    </table>
+      </table>
+    </div>
 
     <h2>这个站</h2>
 
@@ -96,9 +101,6 @@ import { SITE } from '../consts';
       >　·　邮箱：<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
     </p>
 
-    <h2>教育背景</h2>
-
-    <!-- TODO: 补充学校 / 专业 / 学位 / 起止时间 -->
-    <p><em>待补充</em></p>
+    <!-- 教育背景待补充（学校 / 专业 / 学位 / 起止时间），补齐后再加回本节 -->
   </div>
 </BaseLayout>

@@ -2,17 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostListItem from '../components/PostListItem.astro';
 import { getPublishedPosts } from '../lib/posts';
-import { HOME_INTRO } from '../consts';
+import { SITE, HOME_INTRO } from '../consts';
 
 const posts = await getPublishedPosts();
 ---
 
 <BaseLayout>
   <section class="home-intro">
+    <h1 class="visually-hidden">{SITE.title} · {SITE.subtitle}</h1>
     <p class="home-intro__lead">{HOME_INTRO}</p>
     <div class="home-intro__actions">
-      <a class="btn" href="/about/">关于我</a>
+      <a class="btn" href="/blog/">文章</a>
       <a class="btn" href="/projects/">项目</a>
+      <a class="btn" href="/about/">关于我</a>
     </div>
   </section>
 

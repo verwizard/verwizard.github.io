@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://verwizard.github.io/sitemap-index.xml

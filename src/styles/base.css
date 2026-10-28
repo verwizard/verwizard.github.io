@@ -8,6 +8,7 @@ html {
   -webkit-text-size-adjust: 100%;
   font-synthesis: none;
   line-break: strict;
+  text-autospace: normal;
 }
 
 body {
@@ -68,8 +69,26 @@ a:hover {
 }
 
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-accent-strong);
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 .skip-link {

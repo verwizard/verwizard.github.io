@@ -1,39 +1,86 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import { formatDate } from '../lib/format';
+import { readingMinutes } from '../lib/reading';
+import { postUrl } from '../lib/paths';
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  headings?: MarkdownHeading[];
+  newer?: CollectionEntry<'blog'> | null;
+  older?: CollectionEntry<'blog'> | null;
 }
 
-const { post } = Astro.props;
+const { post, headings = [], newer = null, older = null } = Astro.props;
+
 const date = formatDate(post.data.pubDate);
+const updated =
+  post.data.updatedDate && post.data.updatedDate > post.data.pubDate
+    ? formatDate(post.data.updatedDate)
+    : null;
+const minutes = readingMinutes(post.body);
 ---
 
 <BaseLayout
   title={post.data.title}
   description={post.data.description}
   type="article"
+  publishedTime={post.data.pubDate.toISOString()}
+  modifiedTime={post.data.updatedDate?.toISOString()}
 >
   <article>
     <header class="page-header">
       <h1 class="page-title">{post.data.title}</h1>
-      <div class="post-item__meta">
+      <div class="post-meta">
         <time datetime={post.data.pubDate.toISOString()}>{date}</time>
+        <span aria-hidden="true">·</span>
+        <span>{minutes} 分钟阅读</span>
         {
           post.data.tags.length > 0 && (
-            <span>{post.data.tags.join(' · ')}</span>
+            <>
+              <span aria-hidden="true">·</span>
+              <span>{post.data.tags.join(' · ')}</span>
+            </>
           )
         }
       </div>
+      {updated && <p class="post-updated">更新于 {updated}</p>}
     </header>
+
+    <TableOfContents headings={headings} />
+
     <div class="prose">
       <slot />
     </div>
   </article>
 
+  {
+    (newer || older) && (
+      <nav class="post-nav" aria-label="相邻文章">
+        {older && (
+          <a class="post-nav__item" href={postUrl(older)}>
+            <span class="post-nav__label">上一篇</span>
+            <span class="post-nav__title">{older.data.title}</span>
+          </a>
+        )}
+        {newer && (
+          <a class="post-nav__item post-nav__item--next" href={postUrl(newer)}>
+            <span class="post-nav__label">下一篇</span>
+            <span class="post-nav__title">{newer.data.title}</span>
+          </a>
+        )}
+      </nav>
+    )
+  }
+
   <p class="page-note">
     <a href="/blog/">← 回到文章列表</a>
   </p>
 </BaseLayout>
+
+<script>
+  import '../scripts/code-copy';
+</script>

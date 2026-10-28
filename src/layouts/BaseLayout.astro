@@ -9,9 +9,20 @@ interface Props {
   description?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  canonical?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
-const { title, description, type = 'website', noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  type = 'website',
+  noindex = false,
+  canonical = true,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -19,11 +30,32 @@ const { title, description, type = 'website', noindex = false } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        var el = document.documentElement;
+        var saved = null;
+        try {
+          saved = localStorage.getItem('theme');
+        } catch (e) {}
+        var theme =
+          saved === 'light' || saved === 'dark'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        el.dataset.theme = theme;
+        el.style.colorScheme = theme;
+        el.classList.add('js');
+      })();
+    </script>
     <Seo
       title={title}
       description={description}
       type={type}
       noindex={noindex}
+      canonical={canonical}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
     />
   </head>
   <body>
