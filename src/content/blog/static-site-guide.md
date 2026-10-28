@@ -1,0 +1,241 @@
+---
+title: 静态网站及其生成工具指南
+description: 从静态网站的定义与优劣出发，对比 Jekyll、Hugo、Hexo、Gatsby、VuePress，并记录用 GitHub Pages + Jekyll 搭站的完整流程。
+pubDate: 2025-02-11T15:32:24+09:00
+tags: ['静态网站', 'Jekyll', 'GitHub Pages']
+draft: false
+---
+
+## 🌍 什么是静态网站？
+
+静态网站（Static Website）指 **所有网页内容（HTML、CSS、JavaScript、图片等）在服务器上是固定的，不需要服务器动态处理或数据库支持**，用户访问时，服务器直接返回这些文件给浏览器进行展示。
+
+### 📌 静态网站的优势
+
+1. **加载速度快**：服务器直接返回静态文件，无需动态渲染。
+2. **安全性高**：无数据库或后台逻辑，减少攻击风险。
+3. **部署简便**：可托管在 GitHub Pages、Vercel、Netlify 等平台。
+4. **低维护成本**：不需要服务器管理，适合长期运行。
+
+### ⚖️ 静态网站 VS 动态网站
+
+| **特点**     | **静态网站**         | **动态网站**                    |
+| ------------ | -------------------- | ------------------------------- |
+| **内容更新** | 需手动修改代码       | 由数据库或后端代码动态生成      |
+| **交互能力** | 仅支持前端交互       | 支持后端处理和数据库交互        |
+| **访问速度** | 快（直接返回页面）   | 慢（服务器计算请求）            |
+| **安全性**   | 高（无服务器端漏洞） | 低（可能有 SQL 注入、XSS 攻击） |
+| **适用场景** | 博客、文档、企业官网 | 论坛、电商、社交平台            |
+
+---
+
+## 🚀 常见的静态网站生成器对比
+
+| **生成器**   | **语言** | **适用场景**       | **特点**                                 |
+| ------------ | -------- | ------------------ | ---------------------------------------- |
+| **Jekyll**   | Ruby     | 博客、GitHub Pages | GitHub Pages 官方支持，适合个人博客      |
+| **Hugo**     | Go       | 文档、博客、官网   | 速度极快，单个二进制文件，无需安装依赖   |
+| **Hexo**     | Node.js  | 技术博客           | 适合程序员，支持丰富插件和主题           |
+| **Gatsby**   | React    | 现代网站、数据驱动 | 基于 React，支持 GraphQL，适用于动态内容 |
+| **VuePress** | Vue.js   | 文档网站           | Vue 驱动，可作为技术文档平台             |
+
+---
+
+## 🛠️ 使用 GitHub Pages + Jekyll 搭建个人博客
+
+### 📌 1. 创建 GitHub 仓库
+
+1. 访问 [GitHub](https://github.com/) 并 **登录**。
+
+2. 创建一个新的仓库，命名格式：
+
+   ```text
+   yourusername.github.io
+   ```
+
+   （替换 `yourusername` 为你的 GitHub 用户名）
+
+3. 选择 **Public（公开）**，点击 **Create repository** 创建仓库。
+
+---
+
+### 📌 2. 安装 Jekyll（本地环境搭建）
+
+Jekyll 需要 **Ruby** 运行环境，建议使用最新版本的 Ruby。
+
+#### 📌 安装 Ruby 和 Bundler
+
+- **Windows**：
+
+  1. 安装 [RubyInstaller](https://rubyinstaller.org/)
+
+  2. Windows + R 输入 cmd，运行以下命令检查安装：
+
+     ```sh
+     ruby -v
+     gem -v
+     ```
+
+     若看到 Ruby 和 Gem 的版本号，则说明安装成功。
+
+     ![Ruby 与 Gem 版本检查结果](../../assets/blog/static-site-guide/image1.png)
+
+- **macOS**：
+
+  1. 在 Mac 上，推荐使用 Homebrew 安装 Ruby：
+
+     ```sh
+     brew install ruby
+     ```
+
+  2. 安装后，更新环境变量：
+
+     ```sh
+     echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
+     source ~/.zshrc
+     ```
+
+  3. 验证安装：
+
+     ```sh
+     ruby -v
+     gem -v
+     ```
+
+- **Linux**：
+
+  - **Ubuntu / Debian 系统**
+
+    ```sh
+    sudo apt update
+    sudo apt install ruby-full build-essential zlib1g-dev
+    ruby -v
+    gem -v
+    ```
+
+  - **CentOS 系统**
+
+    ```sh
+    sudo yum install ruby
+    ruby -v
+    gem -v
+    ```
+
+- **安装 Bundler（Ruby 依赖管理器）**
+
+  ```sh
+  # 安装命令
+  gem install bundler
+
+  # 安装验证
+  bundler -v
+  ```
+
+  ![Bundler 安装与版本验证](../../assets/blog/static-site-guide/image2.png)
+
+  > **注：** `gem install jekyll bundler` 这条命令用于全局安装 Jekyll 和 Bundler，它 **不依赖于当前所在的目录** 。这意味着你可以在任何目录下打开 **命令提示符（cmd）** 后执行该命令，只需满足以下条件：
+  >
+  > 1. **Ruby 已安装**：确保你已经在 Windows 系统上正确安装了 Ruby（推荐使用 [RubyInstaller](https://rubyinstaller.org/)）
+  >
+  > 2. **PATH 环境变量已配置**：安装 Ruby 后，请确认 Ruby 的 `bin` 目录已添加到系统的 PATH 环境变量中，这样你就可以在任意目录下使用 `gem` 命令。
+
+---
+
+### 📌 3. 创建 Jekyll 博客
+
+- **在 `cmd` 终端运行：**
+
+  1. 安装 Jekyll 和必要依赖：
+
+     ```sh
+     gem install jekyll bundler
+     ```
+
+  2. 初始化一个新的 Jekyll 项目：
+
+     ```sh
+     jekyll new my-blog
+     ```
+
+  3. 进入博客目录并安装依赖：
+
+     ```sh
+     cd my-blog
+     bundle install
+     ```
+
+  4. 启动本地服务器：
+
+     ```sh
+     bundle exec jekyll serve
+     ```
+
+  5. 打开浏览器访问 http://127.0.0.1:4000 预览博客
+
+     ![Jekyll 建站命令执行结果](../../assets/blog/static-site-guide/image3.png)
+
+     ![本地预览启动结果](../../assets/blog/static-site-guide/image4.png)
+
+     ![浏览器中的博客页面](../../assets/blog/static-site-guide/image5.png)
+
+---
+
+### 📌 4. 上传博客到 GitHub
+
+1. 进入博客目录：
+
+   ```sh
+   cd my-blog
+   ```
+
+2. **初始化 Git 仓库：** 在终端中，确保进入你的博客目录并执行以下命令：
+
+   ```sh
+   # 在当前目录下初始化一个本地 Git 仓库
+   git init
+
+   # 将 “当前目录及其子目录中的所有文件” 添加到 Git 的暂存区（Staging Area）
+   git add .
+
+   # 将暂存区中的文件提交到本地的 Git 仓库，并附加一条提交说明（commit message）
+   git commit -m "Initial commit"
+   ```
+
+3. **关联 GitHub 远程仓库并推送：**
+
+   ```sh
+   git remote add origin https://github.com/yourusername/yourusername.github.io.git
+   git branch -M main
+   ```
+
+4. 将代码推送到 GitHub：
+
+   ```sh
+   git push -u origin main
+   ```
+
+---
+
+### 📌 5. 启用 GitHub Pages
+
+1. 进入 [GitHub](https://github.com/) 仓库 **Settings** → **Pages**。
+
+2. 在 **Branch** 选择 `main` 分支 → Folder: `/ (root)`，点击 **Save**。
+
+3. 访问：
+
+   ```text
+   https://yourusername.github.io
+   ```
+
+   你的博客已上线！🎉
+
+---
+
+## 🎯 总结
+
+- **Jekyll**：适合 GitHub Pages，简洁稳定。
+- **Hugo**：最快，适合大规模博客/文档。
+- **Hexo**：Node.js + 主题丰富，适合技术博客。
+- **Gatsby**：React + GraphQL，适合现代网站。
+- **VuePress**：Vue.js + 文档站点最佳。

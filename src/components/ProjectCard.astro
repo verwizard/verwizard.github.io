@@ -1,0 +1,21 @@
+---
+import StatusBadge from './StatusBadge.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-card__head">
+    <h3 class="project-card__title">{project.data.title}</h3>
+    <StatusBadge status={project.data.status} />
+  </div>
+  <p class="project-card__desc">{project.data.summary}</p>
+  <ul class="project-card__tags">
+    {project.data.tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+</article>

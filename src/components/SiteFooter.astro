@@ -1,0 +1,24 @@
+---
+import { SITE } from '../consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__row">
+      © {year} {SITE.author} · 内容采用
+      <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        rel="license noopener"
+        target="_blank">{SITE.license}</a
+      > 许可
+    </div>
+    <div class="site-footer__row">
+      <a href={SITE.repo} rel="noopener" target="_blank">本站源码</a> ·
+      <a href="/rss.xml">RSS</a> ·
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </div>
+    <div class="site-footer__row">由 Astro 构建，托管于 GitHub Pages</div>
+  </div>
+</footer>

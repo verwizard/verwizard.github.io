@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="页面不存在" noindex={true}>
+  <header class="page-header">
+    <h1 class="page-title">404</h1>
+    <p class="page-desc">这个地址没有对应的页面，可能是链接过期或者拼写有误。</p>
+  </header>
+
+  <ul class="post-list">
+    <li class="post-item">
+      <h2 class="post-item__title"><a href="/">回首页</a></h2>
+    </li>
+    <li class="post-item">
+      <h2 class="post-item__title"><a href="/blog/">看看文章</a></h2>
+    </li>
+    <li class="post-item">
+      <h2 class="post-item__title"><a href="/projects/">看看项目</a></h2>
+    </li>
+  </ul>
+</BaseLayout>

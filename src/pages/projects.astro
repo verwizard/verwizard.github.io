@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGroup from '../components/ProjectGroup.astro';
+import { getGroupedProjects } from '../lib/projects';
+import { PROJECTS_INTRO, PROJECTS_NOTE } from '../consts';
+
+const groups = await getGroupedProjects();
+---
+
+<BaseLayout title="项目" description={PROJECTS_INTRO}>
+  <header class="page-header">
+    <h1 class="page-title">项目</h1>
+    <p class="page-desc">{PROJECTS_INTRO}</p>
+  </header>
+
+  {
+    groups.map((group) => (
+      <ProjectGroup title={group.title} projects={group.projects} />
+    ))
+  }
+
+  <p class="page-note">{PROJECTS_NOTE}</p>
+</BaseLayout>

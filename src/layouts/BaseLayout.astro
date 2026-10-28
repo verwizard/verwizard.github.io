@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const { title, description, type = 'website', noindex = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo
+      title={title}
+      description={description}
+      type={type}
+      noindex={noindex}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <SiteHeader />
+    <main id="main">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+    <SiteFooter />
+  </body>
+</html>

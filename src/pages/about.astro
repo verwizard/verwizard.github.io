@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import avatar from '../assets/avatar.jpg';
+import { SITE } from '../consts';
+---
+
+<BaseLayout title="关于我">
+  <header class="about-header">
+    <Image
+      class="about-header__avatar"
+      src={avatar}
+      alt={`${SITE.author} 的头像`}
+      width={72}
+      height={72}
+      format="webp"
+      quality={85}
+    />
+    <div>
+      <h1 class="about-header__name">{SITE.author}</h1>
+      <p class="about-header__meta">{SITE.description}</p>
+    </div>
+  </header>
+
+  <div class="prose">
+    <p>
+      我把时间花在两个方向上：让机器按预期动起来，和从图像里把状态量出来。前者是控制，后者是感知。
+    </p>
+
+    <h2>在做什么</h2>
+
+    <p>
+      <strong>电机控制</strong> —— PMSM 无位置传感器 FOC。有感部分作为入门过渡，主线放在无感。按「抓文献
+      → 复现 baseline → 提假设 → 跑实验」的顺序推进，仿真侧用 MATLAB/Simulink 搭 SPMSM 模型。
+    </p>
+
+    <p>
+      <strong>过程控制与系统辨识</strong> —— 回路级的整定与监控问题。对象模型覆盖 FOPDT / SOPDT /
+      IPDT，单回路与串级结构都做，整定规则铺到 SIMC、IMC、ZN、Cohen-Coon、CHR、AMIGO、Tyreus-Luyben
+      这些常用方法。
+    </p>
+
+    <p>
+      <strong>视觉感知</strong> —— 航天器 6-DoF 相对位姿估计，基于 SPNv2
+      做复现与任务特定特征适配，配套文献库和可核验的实验记录；也做过不依赖训练的经典图像分割。
+    </p>
+
+    <p>具体在做的项目列在<a href="/projects/">项目</a>页。</p>
+
+    <h2>技术栈</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>方向</th>
+          <th>用的东西</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>控制与仿真</td>
+          <td>MATLAB / Simulink、FOC、SVPWM、PID 整定、串级回路、Bode 与稳定裕度分析</td>
+        </tr>
+        <tr>
+          <td>系统辨识</td>
+          <td>最小二乘、ARX</td>
+        </tr>
+        <tr>
+          <td>感知与视觉</td>
+          <td>Python、PyTorch、OpenCV、NumPy / SciPy / scikit-image</td>
+        </tr>
+        <tr>
+          <td>前端工具</td>
+          <td>原生 JavaScript + Canvas，静态实现、离线可运行</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>这个站</h2>
+
+    <p>
+      Astro 5 搭的静态站，源码在 <a href={SITE.repo} rel="noopener" target="_blank">GitHub</a>。文章在<a
+        href="/blog/">博客</a
+      >，项目在<a href="/projects/">项目</a>，两边都会更新，但节奏不同——项目页随进展改，文章写得慢。
+    </p>
+
+    <h2>联系方式</h2>
+
+    <p>
+      GitHub：<a href={`https://github.com/${SITE.github}`} rel="noopener" target="_blank"
+        >{SITE.github}</a
+      >　·　CSDN：<a
+        href={`https://blog.csdn.net/${SITE.csdn}`}
+        rel="noopener"
+        target="_blank">{SITE.csdn}</a
+      >　·　邮箱：<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </p>
+
+    <h2>教育背景</h2>
+
+    <!-- TODO: 补充学校 / 专业 / 学位 / 起止时间 -->
+    <p><em>待补充</em></p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostListItem from '../components/PostListItem.astro';
+import { getPublishedPosts } from '../lib/posts';
+import { HOME_INTRO } from '../consts';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout>
+  <section class="home-intro">
+    <p class="home-intro__lead">{HOME_INTRO}</p>
+    <div class="home-intro__actions">
+      <a class="btn" href="/about/">关于我</a>
+      <a class="btn" href="/projects/">项目</a>
+    </div>
+  </section>
+
+  <section id="blog">
+    {
+      posts.length > 0 ? (
+        <>
+          <h2 class="group-title">最新文章</h2>
+          <ul class="post-list">
+            {posts.map((post) => (
+              <PostListItem post={post} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p class="page-desc">暂时还没有文章。</p>
+      )
+    }
+  </section>
+</BaseLayout>

@@ -1,0 +1,148 @@
+.prose {
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  line-height: var(--leading-body);
+}
+
+.prose h2 {
+  margin: 3rem 0 1rem;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+}
+
+.prose h3 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+}
+
+.prose h4 {
+  margin: 1.75rem 0 0.5rem;
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.prose p {
+  margin: 1.1em 0;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1.1em 0;
+  padding-left: 1.5em;
+  list-style-position: outside;
+}
+
+.prose li {
+  margin: 0.4em 0;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin: 0.4em 0;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  margin: 1.75rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-muted);
+}
+
+.prose blockquote p {
+  margin: 0.6em 0;
+}
+
+.prose hr {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.prose img {
+  margin: 1.75rem auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  height: auto;
+}
+
+.prose a {
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.prose th,
+.prose td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: 0;
+}
+
+.prose th {
+  font-weight: 600;
+  background: var(--color-code-bg);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+
+.prose pre {
+  margin: 1.75rem 0;
+  padding: 1rem 1.125rem;
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  overflow-wrap: normal;
+}
+
+.prose .astro-code {
+  background: var(--color-code-bg) !important;
+}
+
+@media (max-width: 640px) {
+  .prose {
+    font-size: 1rem;
+  }
+
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
