@@ -26,25 +26,38 @@ import { SITE } from '../consts';
 
   <div class="prose">
     <p>
-      我把时间花在两个方向上：让机器按预期动起来，和从图像里把状态量出来。前者是控制，后者是感知。落到的领域是具身智能与航天。
+      做具身智能与航天两个方向。两边做的事情其实是同一套：一边让机器按预期动，一边从图像里把状态量出来。工业过程方向还有几件整定与监控的工具。
     </p>
 
-    <h2>在做什么</h2>
+    <h2>具身智能</h2>
+
+    <p>这一侧是让本体动起来的部分：电机控制落在执行，系统辨识把对象模型弄清楚。</p>
 
     <p>
-      <strong>电机控制</strong> —— PMSM 无位置传感器 FOC。有感部分作为入门过渡，主线放在无感。按「抓文献
+      <strong>无位置传感器电机控制</strong> —— PMSM 的 FOC。有感部分作为入门过渡，主线放在无感。按「抓文献
       → 复现 baseline → 提假设 → 跑实验」的顺序推进，仿真侧用 MATLAB/Simulink 搭 SPMSM 模型。
     </p>
 
     <p>
-      <strong>过程控制与系统辨识</strong> —— 回路级的整定与监控问题。对象模型覆盖 FOPDT / SOPDT /
-      IPDT，单回路与串级结构都做，整定规则铺到 SIMC、IMC、ZN、Cohen-Coon、CHR、AMIGO、Tyreus-Luyben
-      这些常用方法。
+      <strong>系统辨识</strong> —— 从输入输出记录反推对象模型，方法是最小二乘与 ARX，配套数据预处理、模型阶次选择与验证脚本。模型先准，控制器的整定才有依据。
+    </p>
+
+    <h2>航天</h2>
+
+    <p>这一侧是从图像里取状态量：给的是相对位姿，做的是复现与任务适配。</p>
+
+    <p>
+      <strong>6-DoF 相对位姿估计</strong> —— 从单目或多源传感器数据估计目标航天器相对相机的六自由度位姿，场景覆盖在轨服务、交会对接与主动碎片清除。基于 SPNv2 做复现，再把特征适配到具体任务上。
     </p>
 
     <p>
-      <strong>视觉感知</strong> —— 航天器 6-DoF 相对位姿估计，基于 SPNv2
-      做复现与任务特定特征适配；也做过不依赖训练的经典图像分割。
+      <strong>可视化与基础视觉</strong> —— SPNv2 的前向计算、反向传播与优化循环做成了浏览器端的三维演示，用来看清每一步在做什么；另有一组不依赖训练的经典分割，HSV 阈值加形态学，输出二值掩膜与轮廓。
+    </p>
+
+    <h2>工业过程</h2>
+
+    <p>
+      <strong>回路整定与监控</strong> —— 对象模型覆盖 FOPDT / SOPDT / IPDT，单回路与串级都做，整定规则铺到 SIMC、IMC、ZN、Cohen-Coon、CHR、AMIGO、Tyreus-Luyben；另有换热器结垢监控与 P&amp;ID 图纸分析两个静态页面。这块是把同一套回路分析用到过程工业的具体问题上。
     </p>
 
     <p>具体在做的项目列在<a href="/projects/">项目</a>页。</p>
@@ -62,20 +75,20 @@ import { SITE } from '../consts';
       </thead>
       <tbody>
         <tr>
-          <th scope="row">控制与仿真</th>
-          <td>MATLAB / Simulink、FOC、SVPWM、PID 整定、串级回路、Bode 与稳定裕度分析</td>
+          <th scope="row">具身智能</th>
+          <td>MATLAB / Simulink、FOC、SVPWM、最小二乘、ARX、Bode 与稳定裕度分析</td>
         </tr>
         <tr>
-          <th scope="row">系统辨识</th>
-          <td>最小二乘、ARX</td>
+          <th scope="row">航天</th>
+          <td>Python、PyTorch、OpenCV、NumPy / SciPy / scikit-image、SPNv2、6-DoF 位姿</td>
         </tr>
         <tr>
-          <th scope="row">感知与视觉</th>
-          <td>Python、PyTorch、OpenCV、NumPy / SciPy / scikit-image</td>
+          <th scope="row">工业过程</th>
+          <td>FOPDT / SOPDT / IPDT 对象模型、PID 整定、串级回路、SIMC / IMC / ZN / Cohen-Coon / CHR / AMIGO / Tyreus-Luyben</td>
         </tr>
         <tr>
           <th scope="row">前端工具</th>
-          <td>原生 JavaScript + Canvas，静态实现、离线可运行</td>
+          <td>原生 JavaScript + Canvas、Three.js，静态实现、离线可运行</td>
         </tr>
       </tbody>
       </table>

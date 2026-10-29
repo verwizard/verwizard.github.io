@@ -15,7 +15,11 @@ const groups = await getGroupedProjects();
 
   {
     groups.map((group) => (
-      <ProjectGroup title={group.title} projects={group.projects} />
+      <ProjectGroup
+        title={group.title}
+        description={group.description}
+        projects={group.projects}
+      />
     ))
   }
 

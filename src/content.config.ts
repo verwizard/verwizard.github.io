@@ -17,7 +17,8 @@ const projects = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string().min(1),
-    group: z.enum(['control', 'perception']),
+    // 与 consts.ts 的 PROJECT_GROUPS 保持一致
+    group: z.enum(['embodied', 'space', 'industrial']),
     status: z.enum(['active', 'done', 'tool']),
     summary: z.string().min(20).max(400),
     tags: z.array(z.string()).min(1),

@@ -1,6 +1,6 @@
 ---
 title: PMSM 无位置传感器控制
-group: control
+group: embodied
 status: active
 order: 1
 tags: ["MATLAB / Simulink", "FOC", "SVPWM", "PMSM"]

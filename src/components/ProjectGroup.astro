@@ -4,14 +4,16 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   title: string;
+  description?: string;
   projects: CollectionEntry<'projects'>[];
 }
 
-const { title, projects } = Astro.props;
+const { title, description, projects } = Astro.props;
 ---
 
 <section class="project-group">
   <h2 class="group-title">{title}</h2>
+  {description && <p class="group-desc">{description}</p>}
   <div class="project-grid">
     {projects.map((project) => <ProjectCard project={project} />)}
   </div>

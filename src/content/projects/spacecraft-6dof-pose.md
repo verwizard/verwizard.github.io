@@ -1,8 +1,8 @@
 ---
 title: 航天器 6-DoF 相对位姿估计
-group: perception
+group: space
 status: active
-order: 5
+order: 1
 tags: ["PyTorch", "SPNv2", "6-DoF", "位姿估计"]
 summary: 从单目或多源传感器数据估计目标航天器相对相机的六自由度位姿，场景覆盖在轨服务、交会对接与主动碎片清除。基于 SPNv2 做复现与任务特定特征适配。
 ---

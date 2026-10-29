@@ -20,17 +20,36 @@ export const NAV = [
 ] as const;
 
 export const HOME_INTRO =
-  '做具身智能与航天感知方向的工作：控制侧是电机与系统辨识，感知侧是航天器位姿估计。项目页随进展更新，文章写得慢一些。';
+  '一边让机器按预期动，一边从图像里把状态量出来；前者是控制，后者是感知。项目页随进展更新，文章写得慢一些。';
+
+export const HOME_TOPICS = [
+  '具身智能 · 电机控制',
+  '航天 · 位姿估计',
+  '工业过程 · 回路整定',
+] as const;
 
 export const PROJECTS_INTRO =
-  '手上在做的分两类：控制与辨识这一侧服务于具身智能里的运动控制，感知与视觉这一侧主要用在航天器位姿估计上。下面按这个划分列出，进度和形态都照实写。';
+  '项目按方向分三组：具身智能是电机控制与系统辨识，航天是航天器位姿估计与视觉处理，工业过程是回路整定与监控。下面按这三组列出，进度和形态都照实写。';
 
 export const PROJECTS_NOTE =
   '这些项目都在本地推进，暂时没有对应的公开仓库。想了解某一份的具体做法，邮件聊。';
 
 export const PROJECT_GROUPS = [
-  { key: 'control', title: '控制与辨识' },
-  { key: 'perception', title: '感知与视觉' },
+  {
+    key: 'embodied',
+    title: '具身智能',
+    description: '让本体按预期运动：电机控制，以及为控制器服务的系统辨识。',
+  },
+  {
+    key: 'space',
+    title: '航天',
+    description: '从图像里把航天器的相对位姿量出来，视觉侧的基础工作也放在这里。',
+  },
+  {
+    key: 'industrial',
+    title: '工业过程',
+    description: '回路级的整定、监控与图纸分析，同一套回路方法在过程工业里的用法。',
+  },
 ] as const;
 
 export type ProjectStatus = 'active' | 'done' | 'tool';
