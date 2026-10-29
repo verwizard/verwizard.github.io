@@ -37,7 +37,7 @@ const minutes = readingMinutes(post.body);
       <div class="post-meta">
         <time datetime={post.data.pubDate.toISOString()}>{date}</time>
         <span aria-hidden="true">·</span>
-        <span>{minutes} 分钟阅读</span>
+        <span><span class="post-meta__num">{minutes}</span> 分钟阅读</span>
         {
           post.data.tags.length > 0 && (
             <>

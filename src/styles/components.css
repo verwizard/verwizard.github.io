@@ -124,6 +124,7 @@
 
 .project-card {
   padding: 1.5rem;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
@@ -167,11 +168,14 @@
 
 .badge {
   flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.72rem;
   line-height: 1;
   padding: 0.35rem 0.5rem;
   border: 1px solid var(--color-border);
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   color: var(--color-muted);
   white-space: nowrap;
 }
@@ -179,6 +183,15 @@
 .badge--active {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+/* 进行中的方形状态点，纯几何、跟随 currentColor */
+.badge--active::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: currentColor;
 }
 
 .theme-toggle {
@@ -223,11 +236,51 @@ html:not(.js) .theme-toggle {
 }
 
 /* 文章目录 */
+/* ---- 等宽点缀：只给以 ASCII 为主的信息元素，中文文案保持 sans ---- */
+.site-brand {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.site-brand__sub {
+  font-family: var(--font-sans);
+}
+
+.site-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.post-meta time,
+.post-item__meta time,
+.post-meta__num {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.post-item__tags,
+.project-card__tags {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* 标签的 # 号改成主色锚点 */
+.post-item__tags li::before,
+.project-card__tags li::before {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
 .toc {
   max-width: var(--measure);
   margin-bottom: 2rem;
   padding: 0.9rem 1.1rem;
-  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   line-height: 1.7;
@@ -279,6 +332,7 @@ html:not(.js) .theme-toggle {
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.9rem 1.1rem;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   color: var(--color-text);
@@ -320,9 +374,9 @@ html:not(.js) .theme-toggle {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   color: var(--color-muted);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 3px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.15s ease;
